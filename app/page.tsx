@@ -127,37 +127,23 @@ const BangerCaseDApp = () => {
     setWalletAddress('');
   };
 
-  const getRandomRarity = (
-  weights: Record<string, number>
-): string => {
-  const total = Object.values(weights).reduce(
-    (sum: number, weight: number) => sum + weight,
-    0
-  );
+const getRandomToken = (rarity: string) => {
+  const rarityTokens = tokens[rarity];
+  const token =
+    rarityTokens[Math.floor(Math.random() * rarityTokens.length)];
 
-  let random = Math.random() * total;
+  const amount =
+    Math.random() * (token.amount[1] - token.amount[0]) +
+    token.amount[0];
 
-  for (const key in weights) {
-    random -= weights[key];
-    if (random <= 0) return key;
-  }
-
-  return Object.keys(weights)[0];
-
+  return {
+    ...token,
+    rarity,
+    amount: amount < 1 ? amount.toFixed(4) : Math.floor(amount),
+    id: Date.now() + Math.random(),
+  };
 };
 
-  const getRandomToken = (rarity) => {
-    const rarityTokens = tokens[rarity];
-    const token = rarityTokens[Math.floor(Math.random() * rarityTokens.length)];
-    const amount = Math.random() * (token.amount[1] - token.amount[0]) + token.amount[0];
-    
-    return {
-      ...token,
-      rarity,
-      amount: amount < 1 ? amount.toFixed(4) : Math.floor(amount),
-      id: Date.now() + Math.random()
-    };
-  };
 
   const generateReelItems = (caseItem, winningToken) => {
     const items = [];
