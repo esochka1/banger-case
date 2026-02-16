@@ -127,9 +127,12 @@ const BangerCaseDApp = () => {
     setWalletAddress('');
   };
 
-const getRandomToken = (
-  rarity: "common" | "rare" | "epic" | "legendary"
-) =>const rarityTokens = tokens[rarity];
+// Тип автоматически берётся из объекта tokens
+type Rarity = keyof typeof tokens;
+
+const getRandomToken = (rarity: Rarity) => {
+  const rarityTokens = tokens[rarity];
+
   const token =
     rarityTokens[Math.floor(Math.random() * rarityTokens.length)];
 
@@ -140,13 +143,12 @@ const getRandomToken = (
   return {
     ...token,
     rarity,
-    amount: amount < 1 ? amount.toFixed(4) : Math.floor(amount),
+    amount: amount < 1 ? Number(amount.toFixed(4)) : Math.floor(amount),
     id: Date.now() + Math.random(),
   };
 };
 
-
-  const generateReelItems = (caseItem, winningToken) => {
+const generateReelItems = (caseItem, winningToken) => {
     const items = [];
     const allTokens = [...tokens.common, ...tokens.rare, ...tokens.epic, ...tokens.legendary];
     
