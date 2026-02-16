@@ -127,8 +127,9 @@ const BangerCaseDApp = () => {
     setWalletAddress('');
   };
 
-const getRandomToken = (rarity: string) => {
-  const rarityTokens = tokens[rarity];
+const getRandomToken = (
+  rarity: "common" | "rare" | "epic" | "legendary"
+) =>const rarityTokens = tokens[rarity];
   const token =
     rarityTokens[Math.floor(Math.random() * rarityTokens.length)];
 
