@@ -127,7 +127,7 @@ const BangerCaseDApp = () => {
     setWalletAddress('');
   };
 
-  const getRandomRarity = (weights) => {
+  const getRandomRarity = (weights: Record<string, number>) => { {
     const total = Object.values(weights).reduce((sum, weight) => sum + weight, 0);
     let random = Math.random() * total;
     
