@@ -7,19 +7,19 @@ const BangerCaseDApp = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
   const [balance, setBalance] = useState(1000);
-  const [inventory, setInventory] = useState([]);
+  const [inventory, setInventory] = useState<any[]>([]);
   const [isOpening, setIsOpening] = useState(false);
   const [openingPhase, setOpeningPhase] = useState(0);
-  const [lastDrop, setLastDrop] = useState(null);
+  const [lastDrop, setLastDrop] = useState<any>(null);
   const [showResult, setShowResult] = useState(false);
   const [copied, setCopied] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [reelItems, setReelItems] = useState([]);
+  const [reelItems, setReelItems] = useState<any[]>([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [activeTab, setActiveTab] = useState('home');
   const [twitterUrl, setTwitterUrl] = useState('');
   const [twitterConnected, setTwitterConnected] = useState(false);
-  const [dailyTasks, setDailyTasks] = useState([
+  const [dailyTasks, setDailyTasks] = useState<Array<{id: number, title: string, completed: boolean, url: string}>>([
     { id: 1, title: 'Like our post', completed: false, url: 'https://twitter.com/bangercase' },
     { id: 2, title: 'Repost our announcement', completed: false, url: 'https://twitter.com/bangercase' },
     { id: 3, title: 'Follow @BangerCase', completed: false, url: 'https://twitter.com/bangercase' }
